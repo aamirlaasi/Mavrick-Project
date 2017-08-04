@@ -30,11 +30,37 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">Signup  <i class="fa fa-user-plus"></i></a></li>
-                <li><a href="#about">Login  <i class="fa fa-user"></i></a></li>
+                <li><a href="#about" data-toggle="modal" href="#myModal">Login<i class="fa fa-user"></i></a></li>
             </ul>
             </div>
         </div>
     </nav>
+
+<!-- login modal start here -->
+
+<div class="container" id="idmodal">
+	<div class="row">
+        <div class="modal hide" id="myModal">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">x</button>
+            <h3>Login to Mavericks</h3>
+          </div>
+          <div class="modal-body">
+            <form method="post" action='' name="login_form">
+              <p><input type="text" class="span3" name="eid" id="email" placeholder="Email"></p>
+              <p><input type="password" class="span3" name="passwd" placeholder="Password"></p>
+              <p><button type="submit" class="btn btn-primary">Sign in</button>
+                <a href="#">Forgot Password?</a>
+              </p>
+            </form>
+          </div>
+          <div class="modal-footer">
+            New To MyWebsite.com?
+            <a href="#" class="btn btn-primary">Register</a>
+          </div>
+        </div>
+	</div>
+</div>
 
 <!-- main content for index page start here -->
 
@@ -75,11 +101,11 @@
                      <form>
                           <div class="form-group">
                             <label for="exampleInputPassword1">First Name</label>
-                            <input type="password" class="form-control" id="#" placeholder="John">
+                            <input type="password" class="form-control" id="firstname" placeholder="John">
                         </div>
                          <div class="form-group">
                             <label for="exampleInputPassword1">Last name</label>
-                            <input type="password" class="form-control" id="#" placeholder="Deep">
+                            <input type="password" class="form-control" id="lastname" placeholder="Deep">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email</label>
