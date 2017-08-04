@@ -5,7 +5,6 @@
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 <body>
@@ -14,53 +13,38 @@
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="index.html">Mavericks</a>
-            </div>
-            <div id="navbar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="index.html">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Signup  <i class="fa fa-user-plus"></i></a></li>
-                <li><a href="#about" data-toggle="modal" href="#myModal">Login<i class="fa fa-user"></i></a></li>
-            </ul>
+                <a class="navbar-brand" href="index.html">Mavericks</a>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- <li><a href="#">Signup  <i class="fa fa-user-plus"></i></a></li> -->
+                    <li><a href="#" data-toggle="modal" data-target="#login-modal">Login<i class="fa fa-user"></i></a></li>
+                </ul>
             </div>
         </div>
     </nav>
 
 <!-- login modal start here -->
-
-<div class="container" id="idmodal">
-	<div class="row">
-        <div class="modal hide" id="myModal">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">x</button>
-            <h3>Login to Mavericks</h3>
-          </div>
-          <div class="modal-body">
-            <form method="post" action='' name="login_form">
-              <p><input type="text" class="span3" name="eid" id="email" placeholder="Email"></p>
-              <p><input type="password" class="span3" name="passwd" placeholder="Password"></p>
-              <p><button type="submit" class="btn btn-primary">Sign in</button>
-                <a href="#">Forgot Password?</a>
-              </p>
-            </form>
-          </div>
-          <div class="modal-footer">
-            New To MyWebsite.com?
-            <a href="#" class="btn btn-primary">Register</a>
-          </div>
+    <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="loginmodal-container">
+                <h1>Login to Your Account</h1><br>
+                <form>
+                <input type="text" name="user" placeholder="Username">
+                <input type="password" name="pass" placeholder="Password">
+                <input type="submit" name="login" class="login loginmodal-submit" value="Login">
+                </form>
+                <div class="login-help">
+                <a href="#">Register</a> - <a href="#">Forgot Password</a>
+                </div>
+            </div>
         </div>
-	</div>
-</div>
+    </div>
 
 <!-- main content for index page start here -->
 
@@ -70,7 +54,7 @@
  			<div class="content_header">
                  <div id="box">
                     <h1 class="main_page">The Mavericks</h1>
-                    <h3 class="main_page">The Weather Forecast App for <strong>Flight</strong></h3>
+                    <h3 class="main_page">Weather Forecast App for <strong>Flight</strong></h3>
                     <hr class="main_page">
                     <button class="btn btn-default btn-lg main_page"><a href="default.html">Get Started!</a> </button>
                  </div>
@@ -85,7 +69,8 @@
  		<div class="col-lg-12">
  			<div class="content">
                  <div id="box">
-                    <h3 class="main_page">About us</h1>
+                    <h3 class="#">About Us</h1>
+                        <br>                                           
                     <p> Mavericks app helps you track flights live, it provides users weather information as well as commercial flight status and details. For aviation’s enthusiasts, Mavericks provides METAR data to help you evaluate weather information to determine flight conditions using wind & velocity, temperature and sky conditions. Enjoy!</p>
                  </div>
  			</div>
@@ -98,12 +83,14 @@
  		<div class="col-lg-12">
  			<div class="content">
                  <div id="box">
-                     <form>
+                    <h3 class="#">Contact Us</h1>  
+                        <br>                   
+                     <form >
                           <div class="form-group">
                             <label for="exampleInputPassword1">First Name</label>
                             <input type="password" class="form-control" id="firstname" placeholder="John">
                         </div>
-                         <div class="form-group">
+                         <div class="form-group" >
                             <label for="exampleInputPassword1">Last name</label>
                             <input type="password" class="form-control" id="lastname" placeholder="Deep">
                         </div>
