@@ -14,9 +14,10 @@ function iFrame(latitude,longtiude) {
 	var frame = $('<iframe>')
 	// forming a source for the iFrame
 	frame.attr("src","https://opensky-network.org/iframe?c="+latitude+","+longtiude+"&z=13width="+"100%"+"height=100%" )
+	frame.attr("width","100%")
+	frame.attr("height","350")
 	// posted into a div
-	$('#map_weather_header').html(frame);
+	$('#map_opensky').html(frame);
 				};
 				// running this function for test 
 		iFrame(60.332231,75.332231);
-
