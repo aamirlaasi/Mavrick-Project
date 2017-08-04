@@ -32,6 +32,7 @@ function avwx(link) {
 			// Store the relevant data that will be displayed in the
 			// weather results div
 			weather.skyConditions = results.Translations.Clouds;
+			weather.skyConditions = weather.skyConditions.replace("- Reported AGL","");
 			weather.wind = results.Translations.Wind;
 			weather.visibility = results.Translations.Visibility;
 			weather.temperature = results.Translations.Temperature;
