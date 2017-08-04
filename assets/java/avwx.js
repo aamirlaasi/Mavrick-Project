@@ -28,6 +28,7 @@ function avwx(link) {
 		.done(function(res){
 			// Storing an array of results in the results variable
 			var results = res;
+			console.log(results)
 			// Store the relevant data that will be displayed in the
 			// weather results div
 			weather.skyConditions = results.Translations.Clouds;
