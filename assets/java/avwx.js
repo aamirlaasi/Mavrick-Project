@@ -35,15 +35,11 @@ function avwx(link) {
 			weather.wind = results.Translations.Wind;
 			weather.visibility = results.Translations.Visibility;
 			weather.temperature = results.Translations.Temperature;
-			// Testing
-			// -------------------------
-			console.log(weather.skyConditions);
-			console.log(weather.wind);
-			console.log(weather.visibility);
-			console.log(weather.temperature);
-			// -------------------------
-			// Create or assign divs and push to html
-			
+			// Push the above to html
+			$("#skyCondition").text(weather.skyConditions);
+			$("#wind").text(weather.wind);
+			$("#visibility").text(weather.visibility);
+			$("#temperature").text(weather.temperature);		
 		})
 }
 
