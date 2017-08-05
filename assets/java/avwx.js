@@ -9,7 +9,8 @@ var weather = {
 	skyConditions: "",
 	wind : "",
 	visibility: "",
-	temperature : ""
+	temperature : "",
+	iata : ""
 };
 
 // Create functions here
@@ -36,6 +37,8 @@ function avwx(link) {
 			weather.wind = results.Translations.Wind;
 			weather.visibility = results.Translations.Visibility;
 			weather.temperature = results.Translations.Temperature;
+			weather.iata = results.Info.IATA;
+			console.log(weather.iata);
 			// Push the above to html
 			$("#skyCondition").text(weather.skyConditions);
 			$("#wind").text(weather.wind);
@@ -62,6 +65,23 @@ function avwx(link) {
 $("#btn_search").on("click", function(event) {
 	// Only run this code if there is something in the input box
 	if(searchValue!== "") {
+		// This line grabs the input from the search box
+		var searchValue = $("#searchInput").val().trim();
+		console.log(searchValue);
+		// Construct a URL to search for the airport selected 
+		var queryURL = "https://avwx.rest/api/metar/" +
+						searchValue + "?options=info,translate";
+		console.log(queryURL);
+		// Get weather information and push to html
+		avwx(queryURL);
+	};
+});
+
+// Event listener for enter button being pressed.
+$("#searchInput").on("keypress", function(event) {
+	// Only run this code if there is something in the input box
+	// and if enter is pressed
+	if(searchValue!== "" & event.keyCode ===13) {
 		// This line grabs the input from the search box
 		var searchValue = $("#searchInput").val().trim();
 		console.log(searchValue);
