@@ -5,6 +5,7 @@
 // Create glocal variables here
 // ------------------------------------------------
 
+// Create variables for all the weather data
 var weather = {
 	skyConditions: "",
 	wind : "",
@@ -12,6 +13,9 @@ var weather = {
 	temperature : "",
 	iata : ""
 };
+// Create object to hold airport data
+var airports={};
+
 
 // Create functions here
 // -------------------------------------------------
@@ -47,6 +51,11 @@ function avwx(link) {
 		})
 }
 
+// Create function to store json file as an object
+$.getJSON('https://gist.github.com/tdreyno/4278655#file-airports-json', function(data) {
+	airports = data;
+});
+console.log(airports);
 // Testing
 // ------------------------------------------------
 // define the link to be used
@@ -62,6 +71,11 @@ function avwx(link) {
 // -------------------------------------------------
 
 // Event listener for search button being clicked
+
+var main_function = function(event) {
+	
+}
+
 $("#btn_search").on("click", function(event) {
 	// Only run this code if there is something in the input box
 	if(searchValue!== "") {
