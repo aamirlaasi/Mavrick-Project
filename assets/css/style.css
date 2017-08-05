@@ -41,6 +41,9 @@ h1 {
 
 h3 {
     text-align: center;
+    font-family: 'mr-eaves-xl-modern';
+    text-rendering: optimizelegibility;
+    font-size: 30px;
 }
 
 hr {
@@ -224,4 +227,15 @@ iframe {
     width: 120px; 
     height: 120px;
     border: 2px solid #51D2B7;
+}
+
+.profile:hover img {
+  -moz-transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+}
+.caption {
+    display: block;
+    text-align: center;
+    margin-top: 5px;
 }
