@@ -100,7 +100,7 @@ hr {
 }
 
 iframe {
-    margin-top: 10px;    
+    margin-top: 15px;    
 }
 
 #contact {
@@ -205,4 +205,8 @@ iframe {
 
 .login-help{
   font-size: 12px;
+}
+
+#map_weather_box, #flightstat_box {
+    color: orange;
 }

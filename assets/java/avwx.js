@@ -62,6 +62,11 @@ function avwx(link) {
 // -------------------------------------------------
 
 // Event listener for search button being clicked
+
+var main_function = function(event) {
+	
+}
+
 $("#btn_search").on("click", function(event) {
 	// Only run this code if there is something in the input box
 	if(searchValue!== "") {
