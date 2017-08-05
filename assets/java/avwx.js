@@ -47,9 +47,9 @@ function avwx(link) {
 // Testing
 // ------------------------------------------------
 // define the link to be used
-var link = "https://avwx.rest/api/metar/KIAH?options=info,translate";
+// var link = "https://avwx.rest/api/metar/KIAH?options=info,translate";
 // Cal avwx API
-avwx(link);
+// avwx(link);
 // This is testing only. Function will be incorporated into
 // on click event when search is submitted.
 
@@ -58,4 +58,19 @@ avwx(link);
 // Execute the main code here
 // -------------------------------------------------
 
+// Event listener for search button being clicked
+$("#btn_search").on("click", function(event) {
+	// Only run this code if there is something in the input box
+	if(searchValue!== "") {
+		// This line grabs the input from the search box
+		var searchValue = $("#searchInput").val().trim();
+		console.log(searchValue);
+		// Construct a URL to search for the airport selected 
+		var queryURL = "https://avwx.rest/api/metar/" +
+						searchValue + "?options=info,translate";
+		console.log(queryURL);
+		// Get weather information and push to html
+		avwx(queryURL);
+	};
+});
 
