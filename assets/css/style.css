@@ -82,6 +82,7 @@ hr {
 }
 .search_bar {
     margin-top: 80px;
+    /* position: fixed;  */
 }
 
 .map_weather {
@@ -163,7 +164,7 @@ iframe {
 .loginmodal {
   text-align: center;
   font-size: 14px;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Arial';
   font-weight: 700;
   height: 36px;
   padding: 0 8px;
