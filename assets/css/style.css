@@ -234,8 +234,8 @@ iframe {
   -webkit-transform: scale(1.2);
   transform: scale(1.2);
 }
-.caption {
+ .caption {
     display: block;
     text-align: center;
-    margin-top: 5px;
-}
+    margin-top: 10px;
+} 
