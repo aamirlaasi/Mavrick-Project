@@ -48,9 +48,6 @@ function avwx(link) {
 		})
 }
 
-// IATA API call to get all the airports in a city
-// along with the IATA codes
-// CORS error occuring here
 var x = "https://iatacodes.org/api/v6/autocomplete?api_key=a897c6ca-ea9d-4b44-bc82-e6b5c90ef9f8&query=houston";
 http://iatacodes.org/api/VERSION/ENDPOINT?api_key=YOUR-API-KEY
 console.log(x);
