@@ -14,6 +14,7 @@ var weather = {
 	iata : ""
 };
 
+console.log(airports3[0]);
 
 // Create functions here
 // -------------------------------------------------
@@ -48,26 +49,59 @@ function avwx(link) {
 		})
 }
 
+// Autocomplete function for city name
+// Also used to get corresponding icao
+$(function() {
+    var data = airports3;
+    // Below is the name of the textfield that will be autocomplete    
+    $('#searchInput').autocomplete({
+        // This shows the min length of charcters that must be typed before the autocomplete looks for a match.
+        minLength: 2,
+		source: $.map(data, function (item) {
+                return {
+                    label: item.name,
+                    value: item.icao
+                }
+	    }),
+	    search: function(event,ui){
+	    	$('#searchInput').on("autocompletesearch", function(event,ui){});
+	    }  
+
+        // focus: function(event, ui) {
+            // $('#searchInput').val(ui.item.city);
+            // return false;
+        // },
+        // Once a value in the drop down list is selected, do the following:
+        // select: function(event, ui) {
+            // place the person.given_name value into the textfield called 'select_origin'...
+            // $('#searchInput').val(ui.item.city);
+            // and place the person.id into the hidden textfield called 'link_origin_id'. 
+            // $('#link_origin_id').val(ui.item.id);
+                // return false;
+        // }
+    });
+});
+
+
 // IATA API call to get all the airports in a city
 // along with the IATA codes
 // CORS error occuring here
-var x = "https://iatacodes.org/api/v6/autocomplete?api_key=a897c6ca-ea9d-4b44-bc82-e6b5c90ef9f8&query=houston";
-http://iatacodes.org/api/VERSION/ENDPOINT?api_key=YOUR-API-KEY
-console.log(x);
-function IATA(link) {
+// var x = "https://iatacodes.org/api/v6/autocomplete?api_key=a897c6ca-ea9d-4b44-bc82-e6b5c90ef9f8&query=houston";
+// console.log(x);
+// function IATA(link) {
     // Create ajax call for new search item
-    $.ajax({
-        url: link,
-        method: "GET"
-    })
-        // After the data comes back from the API
-        .done(function(res){
-            console.log(res);
-        })
+//     $.ajax({
+//         url: link,
+//         method: "GET"
+//     })
+//         // After the data comes back from the API
+//         .done(function(res){
+//             console.log(res);
+//         })
         
-    };
+//     };
 
-IATA(x);
+// IATA(x);
 
 // Testing
 // ------------------------------------------------
