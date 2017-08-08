@@ -104,6 +104,9 @@ function iFrame(latitude,longtiude) {
 
 $("#btn_search").on("click", function(event) {
 	// Only run this code if there is something in the input box
+	// Record the last string of the search value
+	var flightOrNot = $("#searchInput").val().trim().slice(-1).parseInt();
+	console.log(flightOrNot);
 	if(searchValue!== "") {
 		// This line grabs the input from the search box
 		var searchValue = $("#searchInput").val().trim();
