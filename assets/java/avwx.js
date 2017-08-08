@@ -11,10 +11,9 @@ var weather = {
 	wind : "",
 	visibility: "",
 	temperature : "",
-	iata : ""
+	latitude: "",
+	longitude: ""
 };
-
-console.log(airports3[0]);
 
 // Create functions here
 // -------------------------------------------------
@@ -31,7 +30,6 @@ function avwx(link) {
 		.done(function(res){
 			// Storing an array of results in the results variable
 			var results = res;
-			console.log(results)
 			// Store the relevant data that will be displayed in the
 			// weather results div
 			weather.skyConditions = results.Translations.Clouds;
@@ -39,8 +37,6 @@ function avwx(link) {
 			weather.wind = results.Translations.Wind;
 			weather.visibility = results.Translations.Visibility;
 			weather.temperature = results.Translations.Temperature;
-			weather.iata = results.Info.IATA;
-			console.log(weather.iata);
 			// Push the above to html
 			$("#skyCondition").text(weather.skyConditions);
 			$("#wind").text(weather.wind);
@@ -50,68 +46,55 @@ function avwx(link) {
 }
 
 // Autocomplete function for city name
-// Also used to get corresponding icao
+// Also used to get corresponding icao and latitude/longitude
 $(function() {
     var data = airports3;
     // Below is the name of the textfield that will be autocomplete    
     $('#searchInput').autocomplete({
         // This shows the min length of charcters that must be typed before the autocomplete looks for a match.
         minLength: 2,
+        // Define the data to be used.
+        // map method is used to perform function on every value in the array  
 		source: $.map(data, function (item) {
                 return {
+                	// The label property is displayed in the suggestions menu
                     label: item.name,
-                    value: item.icao
+                    // The value will be inserted into the input element when a user selects an item
+                    value: item.icao,
+                    // Create values for longitude and latitude to pass to iFrame
+                    value1: item.lon,
+                    value2: item.lat
                 }
 	    }),
+	    // Initialize the autocomplete with the search callback specified
 	    search: function(event,ui){
+	    	// Bind an event listener to the autocompletesearch event
 	    	$('#searchInput').on("autocompletesearch", function(event,ui){});
-	    }  
-
-        // focus: function(event, ui) {
-            // $('#searchInput').val(ui.item.city);
-            // return false;
-        // },
+	    }, 
         // Once a value in the drop down list is selected, do the following:
-        // select: function(event, ui) {
-            // place the person.given_name value into the textfield called 'select_origin'...
-            // $('#searchInput').val(ui.item.city);
-            // and place the person.id into the hidden textfield called 'link_origin_id'. 
-            // $('#link_origin_id').val(ui.item.id);
-                // return false;
-        // }
+        select: function(event, ui) {
+        	// Put the selected value in the search box
+        	$('#searchInput').val(ui.item.value);
+            // Save the longitude and latitude values
+            weather.longitude = ui.item.value1;
+            weather.latitude = ui.item.value2;
+            return false;
+        }
     });
 });
 
-
-// IATA API call to get all the airports in a city
-// along with the IATA codes
-// CORS error occuring here
-// var x = "https://iatacodes.org/api/v6/autocomplete?api_key=a897c6ca-ea9d-4b44-bc82-e6b5c90ef9f8&query=houston";
-// console.log(x);
-// function IATA(link) {
-    // Create ajax call for new search item
-//     $.ajax({
-//         url: link,
-//         method: "GET"
-//     })
-//         // After the data comes back from the API
-//         .done(function(res){
-//             console.log(res);
-//         })
-        
-//     };
-
-// IATA(x);
-
-// Testing
-// ------------------------------------------------
-// define the link to be used
-// var link = "https://avwx.rest/api/metar/KIAH?options=info,translate";
-// Cal avwx API
-// avwx(link);
-// This is testing only. Function will be incorporated into
-// on click event when search is submitted.
-
+// Here we create the function to give us the Iframe 
+// Function takes two argument (latitude,longtiude)
+function iFrame(latitude,longtiude) {
+	// We create a jQuery iframe
+	var frame = $('<iframe>');
+	// forming a source for the iFrame
+	frame.attr("src","https://opensky-network.org/iframe?c="+latitude+","+longtiude+"&z=13width="+"100%"+"height=100%" );
+	frame.attr("width","100%");
+	frame.attr("height","450");
+	// posted into a div
+	$('#map_opensky').html(frame);	
+};
 
 
 // Execute the main code here
@@ -119,22 +102,18 @@ $(function() {
 
 // Event listener for search button being clicked
 
-var main_function = function(event) {
-	
-}
-
 $("#btn_search").on("click", function(event) {
 	// Only run this code if there is something in the input box
 	if(searchValue!== "") {
 		// This line grabs the input from the search box
 		var searchValue = $("#searchInput").val().trim();
-		console.log(searchValue);
 		// Construct a URL to search for the airport selected 
 		var queryURL = "https://avwx.rest/api/metar/" +
 						searchValue + "?options=info,translate";
-		console.log(queryURL);
 		// Get weather information and push to html
 		avwx(queryURL);
+		// Get the iframe
+		iFrame(weather.latitude, weather.longitude);
 	};
 });
 
@@ -145,13 +124,13 @@ $("#searchInput").on("keypress", function(event) {
 	if(searchValue!== "" & event.keyCode ===13) {
 		// This line grabs the input from the search box
 		var searchValue = $("#searchInput").val().trim();
-		console.log(searchValue);
 		// Construct a URL to search for the airport selected 
 		var queryURL = "https://avwx.rest/api/metar/" +
 						searchValue + "?options=info,translate";
-		console.log(queryURL);
 		// Get weather information and push to html
 		avwx(queryURL);
+		// Get the iframe
+		iFrame(weather.latitude, weather.longitude);
 	};
 });
 
