@@ -48,7 +48,7 @@ function avwx(link) {
 // Autocomplete function for city name
 // Also used to get corresponding icao and latitude/longitude
 $(function() {
-    var data = airports3;
+    var data = airportsArray;
     // Below is the name of the textfield that will be autocomplete    
     $('#searchInput').autocomplete({
         // This shows the min length of charcters that must be typed before the autocomplete looks for a match.
