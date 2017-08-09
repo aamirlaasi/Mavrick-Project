@@ -29,14 +29,24 @@ h1 {
 	font-size: 5em;
 }
 
+ #box1 {
+    margin-top: 40px;
+} 
 
 .content{
 	 padding-top: 5%; 
 }
 .content_header {
     text-align: center;
-	padding-top: 6%; 
+	/* padding-top: 5%;  */
     
+}
+
+.feature_image {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    margin: 20px 20px 5px 20px;
 }
 
 h3 {
