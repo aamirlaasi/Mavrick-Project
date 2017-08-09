@@ -7,7 +7,7 @@ body {
     
 }
 
-#box {
+.box {
     padding: 20px;
     /* opacity:.5; */
     /* margin: auto; */
