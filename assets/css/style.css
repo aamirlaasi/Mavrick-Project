@@ -59,9 +59,42 @@ h1 {
 
 .feature_image {
     display: inline-block;
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     margin: 20px 20px 5px 20px;
+}
+
+.feature_hotel, .feature_flight, .feature_weather, .feature_restaurant {
+    animation-duration: 5s; 
+    animation-name: bounceInDown;
+}
+
+@keyframes bounceInDown {
+  from, 60%, 75%, 90%, to {
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -3000px, 0);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translate3d(0, 25px, 0);
+  }
+
+  75% {
+    transform: translate3d(0, -10px, 0);
+  }
+
+  90% {
+    transform: translate3d(0, 5px, 0);
+  }
+
+  to {
+    transform: none;
+  }
 }
 
 h3 {
@@ -109,6 +142,8 @@ hr {
 }
 .search_bar {
     margin-top: 70px;
+    animation-name: bounceInDown;
+    animation-duration: 2s;
     /* position: fixed;  */
 }
 #map_opensky {
@@ -120,6 +155,9 @@ hr {
     background-color:#173e7c;
     padding: 20px;
     border: 2px solid lightgray ;
+    animation-duration: 2s;
+    animation-name: slidein;
+
 }
 .list-group-item {
     color: black;
