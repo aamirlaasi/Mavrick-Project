@@ -1,6 +1,7 @@
 // functions for the retrevial of flight information status
 //
-
+//Global Variable to cirumvent return issue
+// var destinationFromFlight;
 // Flight information Object
 var flightData =
 {
@@ -81,7 +82,7 @@ function retrieveFlightStatus(flightInput){
 		};
 		// Write to the DOM
 		flightData.writeToHTML();
-		return response.FlightInfoStatusResult.flights[i].destination.code;
+		destinationFromFlight = response.FlightInfoStatusResult.flights[i].destination.code;
 	});
 }
 

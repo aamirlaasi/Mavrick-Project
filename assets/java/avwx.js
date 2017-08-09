@@ -5,6 +5,9 @@
 // Create glocal variables here
 // ------------------------------------------------
 
+// flight status output icao
+var destinationFromFlight;
+
 // Create variables for all the weather data
 var weather = {
 	skyConditions: "",
@@ -147,8 +150,8 @@ $("#searchInput").on("keypress", function(event) {
 		// This line grabs the input (ICAO) from the search box
 		var searchValue = $("#searchInput").val().trim();
 		// Update the flight status and store destination icao
-		var destination = retrieveFlightStatus(searchValue);
-		console.log(destination);
+		retrieveFlightStatus(searchValue);
+		console.log(typeof(destinationFromFlight));
 	};
 
 });
