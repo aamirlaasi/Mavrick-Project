@@ -35,7 +35,7 @@ h1 {
 }
 .content_header {
     text-align: center;
-	 padding-top: 6%; 
+	padding-top: 6%; 
     
 }
 
@@ -84,16 +84,18 @@ hr {
     font-size: 15px;
 }
 .search_bar {
-    margin-top: 80px;
+    margin-top: 70px;
     /* position: fixed;  */
 }
-
+#map_opensky {
+    margin-top: 8px;
+}
 .map_weather {
-    margin-top: 70px;
+    margin-top: 30px;
     margin-bottom: 70px;    
     background-color:#173e7c;
     padding: 20px;
-    border: 4px solid lightgray ;
+    border: 2px solid lightgray ;
 }
 .list-group-item {
     color: black;
