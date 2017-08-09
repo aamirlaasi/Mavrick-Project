@@ -241,3 +241,12 @@ iframe {
     text-align: center;
     margin-top: 10px;
 } 
+
+/* blink effect */
+
+.blink {
+  animation: blinker 1.5s linear infinite;
+}
+ @keyframes blinker {  
+  50% { opacity: 0; }
+} 
