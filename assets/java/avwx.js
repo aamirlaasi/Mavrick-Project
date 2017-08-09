@@ -203,35 +203,60 @@ function search(nameKey, myArray){
     }
 }
 
+// Function to empty out all the divs
+function emptyAll(){
+	$("#skyCondition").empty();
+	$("#wind").empty();
+	$("#visibility").empty();
+	$("#temperature").empty();
+	$('#airline').empty();
+	$('#departure').empty();
+	$('#destination').empty();
+	$('#arrivaltime').empty();
+	$('#status').empty();
+}
+
 // Execute the main code here
 // -------------------------------------------------
 
 // Event listener for search button being clicked
 
 $("#btn_search").on("click", function(event) {
+	// When the search button is clicked
+	// if(event.keyCode === 13) {
+		// Empty out all divs
+		emptyAll();
+		// Save the search value in a variable
+		var searchValue = $("#searchInput").val().trim();
+		// 	Check if a flight number has been entered or not
+		var flightOrNot = searchValue.substr(searchValue.length - 1);
+	// }
 	// Only run this code if there is something in the input box
-	// Record the last string of the search value
-	// var searchValue = $("#searchInput").val().trim();
-
-
-	// if(searchValue!== "") {
-	// 	// This line grabs the input from the search box
-	// 	var searchValue = $("#searchInput").val().trim();
-	// 	// Construct a URL to search for the airport selected 
-	// 	var queryURL = "https://avwx.rest/api/metar/" +
-	// 					searchValue + "?options=info,translate";
-	// 	// Get weather information and push to html
-	// 	avwx(queryURL);
-	// 	// Get the iframe
-	// 	iFrame(weather.latitude, weather.longitude);
-	// };
+	// and if enter is pressed and if it is not a flight number
+	if(searchValue!== "" & isNaN(flightOrNot) === true ) {
+		// This line grabs the input (ICAO) from the search box
+		var searchValue = $("#searchInput").val().trim();
+		// Construct a URL to search for the airport selected 
+		var queryURL = "https://avwx.rest/api/metar/" +
+						searchValue + "?options=info,translate";
+		// Get weather information and push to html
+		avwx(queryURL);
+		// Get the iframe
+		iFrame(weather.latitude, weather.longitude);
+	} else if (searchValue!== "" & isNaN(flightOrNot) === false) {
+		// This line grabs the input (ICAO) from the search box
+		var searchValue = $("#searchInput").val().trim();
+		// Update the flight status and store destination icao
+		retrieveFlightStatus(searchValue);
+	};
 });
 
 // Event listener for enter button being pressed.
 $("#searchInput").on("keypress", function(event) {
-	
-	// When the enter key 
+	// When the enter key is pressed
 	if(event.keyCode === 13) {
+		// Empty out all divs
+		emptyAll();
 		// Save the search value in a variable
 		var searchValue = $("#searchInput").val().trim();
 		// 	Check if a flight number has been entered or not
