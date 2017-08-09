@@ -14,7 +14,7 @@ body {
     /* background-color: #1a396b; */
     background: rgba(26, 55, 102, 0.7);
     color: whitesmoke;  
-    animation-duration: 2s;
+    animation-duration: 1s;
     animation-name: slidein;
 }
 
