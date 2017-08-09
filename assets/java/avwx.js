@@ -91,7 +91,7 @@ function avwx(link) {
 
 // Autocomplete function for city name
 // Also used to get corresponding icao and latitude/longitude
-$(function() {
+$(document).ready($(function() {
     var data = airportsArray;
     // Below is the name of the textfield that will be autocomplete    
     $('#searchInput').autocomplete({
@@ -125,7 +125,7 @@ $(function() {
             return false;
         }
     });
-});
+}));
 
 // Here we create the function to give us the Iframe 
 // Function takes two argument (latitude,longtiude)
