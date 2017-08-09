@@ -81,7 +81,7 @@ function retrieveFlightStatus(flightInput){
 		};
 		// Write to the DOM
 		flightData.writeToHTML();
-		return;
+		return response.FlightInfoStatusResult.flights[i].destination.code;
 	});
 }
 

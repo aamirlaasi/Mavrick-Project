@@ -105,27 +105,36 @@ function iFrame(latitude,longtiude) {
 $("#btn_search").on("click", function(event) {
 	// Only run this code if there is something in the input box
 	// Record the last string of the search value
-	var flightOrNot = $("#searchInput").val().trim().slice(-1).parseInt();
-	console.log(flightOrNot);
-	if(searchValue!== "") {
-		// This line grabs the input from the search box
-		var searchValue = $("#searchInput").val().trim();
-		// Construct a URL to search for the airport selected 
-		var queryURL = "https://avwx.rest/api/metar/" +
-						searchValue + "?options=info,translate";
-		// Get weather information and push to html
-		avwx(queryURL);
-		// Get the iframe
-		iFrame(weather.latitude, weather.longitude);
-	};
+	// var searchValue = $("#searchInput").val().trim();
+
+
+	// if(searchValue!== "") {
+	// 	// This line grabs the input from the search box
+	// 	var searchValue = $("#searchInput").val().trim();
+	// 	// Construct a URL to search for the airport selected 
+	// 	var queryURL = "https://avwx.rest/api/metar/" +
+	// 					searchValue + "?options=info,translate";
+	// 	// Get weather information and push to html
+	// 	avwx(queryURL);
+	// 	// Get the iframe
+	// 	iFrame(weather.latitude, weather.longitude);
+	// };
 });
 
 // Event listener for enter button being pressed.
 $("#searchInput").on("keypress", function(event) {
+	
+	// When the enter key 
+	if(event.keyCode === 13) {
+		// Save the search value in a variable
+		var searchValue = $("#searchInput").val().trim();
+		// 	Check if a flight number has been entered or not
+		var flightOrNot = searchValue.substr(searchValue.length - 1);
+	}
 	// Only run this code if there is something in the input box
-	// and if enter is pressed
-	if(searchValue!== "" & event.keyCode ===13) {
-		// This line grabs the input from the search box
+	// and if enter is pressed and if it is not a flight number
+	if(searchValue!== "" & event.keyCode ===13 & isNaN(flightOrNot) === true ) {
+		// This line grabs the input (ICAO) from the search box
 		var searchValue = $("#searchInput").val().trim();
 		// Construct a URL to search for the airport selected 
 		var queryURL = "https://avwx.rest/api/metar/" +
@@ -134,7 +143,14 @@ $("#searchInput").on("keypress", function(event) {
 		avwx(queryURL);
 		// Get the iframe
 		iFrame(weather.latitude, weather.longitude);
+	} else if (searchValue!== "" & event.keyCode ===13 & isNaN(flightOrNot) === false) {
+		// This line grabs the input (ICAO) from the search box
+		var searchValue = $("#searchInput").val().trim();
+		// Update the flight status and store destination icao
+		var destination = retrieveFlightStatus(searchValue);
+		console.log(destination);
 	};
+
 });
 
 
