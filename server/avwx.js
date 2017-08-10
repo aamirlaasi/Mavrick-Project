@@ -61,7 +61,6 @@ function IATA(link) {
         .done(function(res){
             console.log(res);
         })
-        
     };
 
 IATA(x);
