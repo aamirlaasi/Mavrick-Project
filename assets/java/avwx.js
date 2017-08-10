@@ -137,7 +137,7 @@ function iFrame(latitude,longtiude) {
 	frame.attr("width","100%");
 	frame.attr("height","450");
 	// posted into a div
-	$('#map_opensky').html(frame);	
+	$('#map_opensky').html(frame);
 };
 
 // Main Function to grab Flight Status
